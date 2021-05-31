@@ -1,0 +1,9 @@
+31/5-21:
+    Idag har jag börjat på att skriva på findResult.
+    Först så skapar jag en tom lista, för att lägga matchningar.
+    Anledningen till att jag tar query och kör toLowerCase() är för att
+    öka antalet olika sökningar som går att göra, då utan den så är den 
+    känslig för stora och små bokstäver, vilket inte är optimalt i en sökmotor
+    När funktionen har hittat en matchning så lägger den till titel och beskrivning
+    i listan separat, sedan så kollar jag på indexet och beroende på om det är udda eller jämnt
+    så vet jag om det är en titel eller en beskrivning
