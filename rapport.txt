@@ -7,3 +7,48 @@
     När funktionen har hittat en matchning så lägger den till titel och beskrivning
     i listan separat, sedan så kollar jag på indexet och beroende på om det är udda eller jämnt
     så vet jag om det är en titel eller en beskrivning
+
+7/6-21:
+    Jag fick lite förklaring och det som ska retuneras är 
+    [
+        {
+            title: "Lorem Ipsum",
+            description: "Lorem Ipsum dolor set amet"
+        },
+        {
+            title: "Lorem Ipsum",
+            description: "Lorem Ipsum dolor set amet"
+        },
+        {
+            title: "Lorem Ipsum",
+            description: "Lorem Ipsum dolor set amet"
+        },
+        {
+            title: "Lorem Ipsum",
+            description: "Lorem Ipsum dolor set amet"
+        },
+    ]
+    Så min lösning med udda är titel och jämna är beskrivning var inkorrekt
+    Det finns mer data än "title" & "description" nämligen bild & id. Men det används inte i denna uppgiften
+    createResultElement var lite klurig då jag inte var helt säker på hur man skrev för att ge element barn,
+    men efter en google sökning så var det fixat.
+
+    Debugging gör jag på ett litet eget sätt.
+    Jag börjar med att skriva ut console.log på de rader där jag misstänker att koden inte fungerar som jag vill.
+    Det jag däremot skriver i consol.log är vilken rad den är skriven på, exempel är: console.log("ln 32")
+    när detta är gjort innan och efter alla ställen där jag misstänker att det har gått fel så kör jag programmet.
+    Då ser jag i konsolen:
+    ln 4
+    ln 8
+    ln 9
+    ln 45
+    ln 47
+    ln 11
+    ln 13
+    ln 81
+    ln 83
+    
+    Men jag förväntade mig att efter "ln 13" skulle "ln 22" komma. Då vet jag att den inte kommer in i if-satsen eller vad som nu är skrivet där.
+    Då vet jag att runt rad 20 trakterna är felet, då kan jag börja att sätta ut "Debugger;" och kolla på värdena.
+    Denna metoden fungerar väldigt bra på mindre programm, men ju större de blir destå fler consol.log behövs, 
+    vilket betyder att jag måste vara nogrann i var jag sätter dem, vet jag att rad 32-68 fungerar så behöver jag inte sätta något där.

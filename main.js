@@ -348,39 +348,56 @@ Finish this function, it should return a HTML element that looks like this:
 </li>
 */
 function createResultElement(title, description) {
-    console.log("This function is not implemented.");
+    // Creates the elements and sets the correct class
+    let liElement = document.createElement("li");
+
+    let article = document.createElement("article");
+    article.className ="search-result";
+
+    let header = document.createElement("header");
+    header.className = "search-result-header search-result-section";
+
+    let div = document.createElement("div");
+    div.className = "search-result-body search-result-section";
+
+
+    // set up the parent child structure
+    liElement.appendChild(article);
+    article.appendChild(header);
+    article.appendChild(div);
+
+
+    // Sets the value on the elements
+    header.innerHTML = title;
+    div.innerHTML = description;
+
+    return liElement;
 }
 
 // Finish this function
 // takes in a string as an argument and searches the "RESULTS" array to find one or many results
 // that matches the string.
 // should compare the title and description of each result.
-//
+// 
 // This should return an array with all matching results.
 function findResult(query) {
-    // console.log("You searched for: ", query, "But this function is not implemented.");
-    const matches = []
-    const queryLowerCase = query.toLowerCase();
+    const matches=[];
+    const queryLowerCase = query.toLowerCase(); //saves what the user has written and makes it not case sensitive
 
+    // Loops the RESULT list
     RESULTS.forEach(function(item){
-        const title = item.title.toLowerCase();
-        const description = item.description.toLowerCase();
+        const title = item.title.toLowerCase(); // puts the title in memory
+        const description = item.description.toLowerCase(); //puts the description in memory
 
+
+        // Compares the search query to the current title and description and
+        // if title/description includes the query it's a match and pushed to the matches list
         if (title.includes(queryLowerCase)||description.includes(queryLowerCase)){
-            // matches.push(item);
-
-            matches.push(item.title);
-            matches.push(item.description);
+            matches.push(item);
         }
     })
-    for (let i = 0; i < matches.length; i++){
-        if (i%2 === 0){
-            console.log("title: ",matches[i]);
-        }
-        else if (i%2 === 1){
-            console.log("Description: ",matches[i]);
-        }
-    }
+
+    return matches;
 }
 
 inputField.addEventListener("keyup", function(event){
@@ -392,10 +409,7 @@ inputField.addEventListener("keyup", function(event){
 
     // convert all results objects to HTML elements and push them to our "resultsArea" div.
     if (results) {
-        results.forEach(result => resultsArea.appendChild(createResultElement(
-            result.title,
-            result.description
-        )));
+        results.forEach(result => resultsArea.appendChild(createResultElement(result.title,result.description)));
     } else {
         // console.log("No results.");
     }
